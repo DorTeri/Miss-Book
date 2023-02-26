@@ -11,10 +11,10 @@ export default {
     template: `
     <section class="books-index">
         <BookFilter v-show="isFilter" :books="books" @filter="setFilterBy"/>
-        <button v-if="isFilter" @click="toggleFilter">close</button>
-        <button v-if="!isFilter" @click="toggleFilter">Filter</button>
-        <button class="btn-add" @click="toggleAdd">Add book</button>
-        <BookEdit v-show="add" @book-saved="onSaveBook"/>
+        <button v-if="isFilter" class="btn-filter" @click="toggleFilter">close</button>
+        <button v-if="!isFilter" class="btn-filter" @click="toggleFilter">Filter</button>
+        <button v-if="!add" class="btn-add" @click="toggleAdd">Add book</button>
+        <BookEdit v-show="add" @go-back="closeEdit" @book-saved="onSaveBook"/>
         <BookList 
         :books="filteredBooks" 
         v-if="books"
@@ -47,6 +47,7 @@ export default {
         },
         onSaveBook(newBook) {
             this.books.unshift(newBook)
+            this.add = false
         },
         setFilterBy(filterBy) {
             this.filterBy = filterBy
@@ -56,6 +57,9 @@ export default {
         },
         toggleFilter() {
             this.isFilter = !this.isFilter
+        },
+        closeEdit() {
+            this.add = false
         }
     },
     computed: {

@@ -4,22 +4,25 @@ import { bookService } from "../services/book.service.js"
 export default {
     template: `
     <section class="book-edit">
-        <h2>Add a book</h2>
         <form @submit.prevent="save">
+            <h2>Add a book</h2>
             <input type="text" v-model="book.title" placeholder="Book Title" required/>
             <input type="number" v-model.number="book.listPrice.amount" title="Book price" required/>
             <input type="text" v-model="book.author" placeholder="Author name"/>
             <input type="text" v-model="book.publishedDate" placeholder="Publised year"/>
             <input type="text" v-model="book.description" placeholder="Book description"/>
             <input type="text" v-model="book.thunbnail" placeholder="Book's url image"/>
-            <p>Is on sale?</p>
+            <p>Is on sale?
             <input type="checkbox" v-model="book.isOnSale"/>
+            </p>
+            <p>Select language</p>
             <select v-model="book.language" required>
                 <option value="" selected disabled>Select language</option>
                 <option value="en">en</option>
                 <option value="he">he</option>
             </select>
             <button>Add</button>
+            <button @click="goBack">Back</button>
         </form>
     </section>
     `,
@@ -35,6 +38,9 @@ export default {
                     this.book = bookService.getEmptyBook()
                     this.$emit('book-saved', savedBook)
                 })
+        },
+        goBack() {
+            this.$emit('go-back')
         }
     }
 }

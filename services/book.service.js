@@ -459,7 +459,8 @@ const booksData = [
 makeData()
 
 function makeData() {
-  utilService.saveToStorage(BOOK_KEY , booksData)
+  if(!utilService.loadFromStorage(BOOK_KEY)) utilService.saveToStorage(BOOK_KEY , booksData)
+  else return
 }
 
 function query(filterBy = {}) {

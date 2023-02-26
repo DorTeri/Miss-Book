@@ -7,23 +7,40 @@
     list-style-type: none;
 }
 .books-list ul li{
+    border-radius: 5px;
+    position: relative;
     text-align: center;
-    padding: 10px;
-    background-color: #fff;
+    padding: 25px;
+    background-color: #f1f1f1;
+    color: rgb(0, 0, 0);
 }
 
 .book-preview h2 {
-    color: var(--txt);
     font-weight: bold;
 }
 
 .books-list button {
-    position: relative;
-    color: var(--header);
-    background-color: inherit;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    translate: -50%;
+    padding: 7px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background-color: #7796CB;
     border: none;
+    transition: .4s;
+}
+
+.books-list img {
+    transition: .4s;
+}
+
+.books-list img:hover {
+    transform: rotate(10deg);
 }
 
 .books-list button:hover {
     cursor: pointer;
+    background-color: #f1f1f1;
 }

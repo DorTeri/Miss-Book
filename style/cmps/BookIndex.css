@@ -1,0 +1,14 @@
+.btn-add , .btn-filter {
+    background-color: inherit;
+    border: 2px solid #7796CB;
+    padding: 5px;
+    margin-top: 5px;
+    margin-inline-start: 15px;
+    border-radius: 5px;
+    transition: .4s;
+}
+
+.books-index button:hover {
+    background-color: #7796CB;
+    cursor: pointer;
+}

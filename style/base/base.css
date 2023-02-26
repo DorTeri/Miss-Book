@@ -3,10 +3,11 @@
 }
 
 body {
+    position: relative;
     margin: 0;
     font-family: 'Inter', sans-serif;
-    color: var(--txt);
-    background-color: var(--bgc);
+    color: black;
+    background-color: #FAFAFF;
 }
 
 h1,

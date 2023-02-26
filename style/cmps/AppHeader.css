@@ -6,20 +6,10 @@
     align-items: center;
     justify-content: space-between;
     
-    height: 80px;
-    background-color: #fff;
+    height: 70px;
+    background-color: #7796CB;
     padding: 10px;
     margin-bottom: 20px;
-}
-
-.app-header:before {
-    position: absolute;
-    content: '';
-    height: 25px;
-    right: 0;
-    top: 0;
-    width: 100%;
-    background-color: var(--button);
 }
 
 .app-header h1 {
