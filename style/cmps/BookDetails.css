@@ -1,0 +1,36 @@
+.book-details {
+    position: relative;
+    display: grid;
+    
+    padding: 10px;
+    background-color: lightsteelblue;
+    margin-block-start: 10px;
+}
+
+.book-details .sale {
+    text-align: center;
+    width: 15%;
+    padding: 10px;
+    background-color: red;
+    position: absolute;
+    right: -3%;
+    top: 0;
+    transform: rotate(30deg);
+}
+
+.book-details img{
+    width: 200px;
+    justify-self: center;
+}
+
+.book-details button{
+    justify-self: end;
+}
+
+.book-details .red {
+    color: red;
+}
+
+.book-details .green {
+    color: rgb(0, 255, 0);
+}
