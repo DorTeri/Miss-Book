@@ -1,11 +1,12 @@
 .app-footer {
     display: flex;
     align-items: center;
+    justify-content: center;
     
-    height: 5vh;
+    height: 70px;
     
     padding: 10px;
-    background-color: lightblue;
+    background-color: var(--title);
 }
 .app-footer p {
     margin: 0;

@@ -5,7 +5,8 @@
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    color: var(--gray3);
+    color: var(--txt);
+    background-color: var(--bgc);
 }
 
 h1,

@@ -11,7 +11,7 @@ export default {
             <h4>Authors: <span v-for="author in book.authors">{{ author }}</span></h4>
             <h4>Page count: {{ book.pageCount}} , {{ readingLevel }}</h4>
             <h5>Published Date: {{ book.publishedDate }} , {{ publishStatus }}</h5>
-            <img :src="book.thumbnail" alt="Book image">
+            <img :src="book.thumbnail">
             <LongTxt :txt="book.description"/>
             <p class="book-categories">Categories:
                 <span v-for="categorie in book.categories">{{ categorie }}</span></p>
@@ -19,6 +19,11 @@ export default {
             <button @click="closeDetails">Close</button>
         </section>
     `,
+    data() {
+        return {
+            defaultImgUrl: '../images/book-cover.jpeg'
+        }
+    },
     methods: {
         closeDetails(){
             this.$emit('hide-details')

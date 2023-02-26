@@ -10,8 +10,10 @@ import BookDetails from './BookDetails.js'
 export default {
     template: `
     <section class="books-index">
-        <BookFilter :books="books" @filter="setFilterBy"/>
-        <button @click="toggleAdd">Add book</button>
+        <BookFilter v-show="isFilter" :books="books" @filter="setFilterBy"/>
+        <button v-if="isFilter" @click="toggleFilter">close</button>
+        <button v-if="!isFilter" @click="toggleFilter">Filter</button>
+        <button class="btn-add" @click="toggleAdd">Add book</button>
         <BookEdit v-show="add" @book-saved="onSaveBook"/>
         <BookList 
         :books="filteredBooks" 
@@ -28,7 +30,8 @@ export default {
             books: null,
             selectedBook: null,
             filterBy: {maxPrice: 400},
-            add: false
+            add: false,
+            isFilter: false
         }
     },
     methods: {
@@ -50,6 +53,9 @@ export default {
         },
         toggleAdd() {
             this.add = !this.add
+        },
+        toggleFilter() {
+            this.isFilter = !this.isFilter
         }
     },
     computed: {

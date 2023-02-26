@@ -10,4 +10,10 @@
   --gray1: rgb(240, 240, 240);
   --gray2: rgb(155, 155, 155);
   --gray3: rgb(44, 44, 44);
+
+  --bgc: #fff;
+  --bgc1:  #d9d9d9;
+  --txt: black;
+  --button: #4484ce;
+  --title: #f19f4d;
 } 

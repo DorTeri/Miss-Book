@@ -4,10 +4,26 @@
     gap: 10px;
 
     padding: 10px;
-    background-color: lightblue;
     list-style-type: none;
 }
 .books-list ul li{
+    text-align: center;
     padding: 10px;
-    background-color: darkseagreen;
+    background-color: #fff;
+}
+
+.book-preview h2 {
+    color: var(--txt);
+    font-weight: bold;
+}
+
+.books-list button {
+    position: relative;
+    color: var(--header);
+    background-color: inherit;
+    border: none;
+}
+
+.books-list button:hover {
+    cursor: pointer;
 }
