@@ -3,3 +3,7 @@
     background-color: lightgray;
     margin-block-start: 10px;
 }
+
+.book-filter .checkbox-sale {
+    display: block;
+}

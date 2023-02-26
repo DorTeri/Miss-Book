@@ -8,6 +8,8 @@ export default {
         <form @submit.prevent="save">
             <input type="text" v-model="book.title" placeholder="Book Title"/>
             <input type="number" v-model.number="book.listPrice.amount"/>
+            <p>Is on sale?</p>
+            <input type="checkbox" v-model="book.isOnSale"/>
             <button>Add</button>
         </form>
     </section>

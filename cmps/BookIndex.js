@@ -10,8 +10,9 @@ import BookDetails from './BookDetails.js'
 export default {
     template: `
     <section class="books-index">
-        <BookFilter @filter="setFilterBy"/>
-        <BookEdit v-if="add" @book-saved="onSaveBook"/>
+        <BookFilter :books="books" @filter="setFilterBy"/>
+        <button @click="toggleAdd">Add book</button>
+        <BookEdit v-show="add" @book-saved="onSaveBook"/>
         <BookList 
         :books="filteredBooks" 
         v-if="books"
@@ -26,7 +27,7 @@ export default {
         return {
             books: null,
             selectedBook: null,
-            filterBy: {},
+            filterBy: {maxPrice: 400},
             add: false
         }
     },
@@ -46,12 +47,16 @@ export default {
         },
         setFilterBy(filterBy) {
             this.filterBy = filterBy
+        },
+        toggleAdd() {
+            this.add = !this.add
         }
     },
     computed: {
         filteredBooks() {
             const regex = new RegExp(this.filterBy.title, 'i')
-            return this.books.filter(book => regex.test(book.title))
+            return this.books.filter(book => regex.test(book.title) &&
+            book.listPrice.amount < this.filterBy.maxPrice)
         }
     },
     created() {

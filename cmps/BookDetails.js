@@ -33,7 +33,7 @@ export default {
         publishStatus() {
             const currYear = new Date().getFullYear()
             const diff = currYear - this.book.publishedDate
-            if(diff < 1) return 'New'
+            if(diff <= 1) return 'New'
             else if(diff > 10) return 'Vintage'
         },
         classObject() {
