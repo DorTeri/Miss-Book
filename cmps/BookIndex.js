@@ -11,12 +11,11 @@ export default {
     template: `
     <section class="books-index">
         <BookFilter @filter="setFilterBy"/>
+        <BookEdit v-if="add" @book-saved="onSaveBook"/>
         <BookList 
         :books="filteredBooks" 
         v-if="books"
-        @remove="removeBook"
         @show-details="showBookDetails"/>
-        <BookEdit @book-saved="onSaveBook"/>
         <bookDetails 
         v-if="selectedBook"
         @hide-details="selectedBook = null"
@@ -27,7 +26,8 @@ export default {
         return {
             books: null,
             selectedBook: null,
-            filterBy: {}
+            filterBy: {},
+            add: false
         }
     },
     methods: {

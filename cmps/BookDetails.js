@@ -1,13 +1,21 @@
+import LongTxt from "./LongTxt.js"
+
 export default {
     props: ['book'],
     template: `
         <section class="book-details">
             <div class="sale" v-if="book.listPrice.isOnSale">On sale</div>
             <h2>{{ book.title }}</h2>
-            <h3 :class="classObject">{{ book.listPrice.amount }}</h3>
-            <h4>Reading level: {{ readingLevel }}</h4>
-            <h5>{{ publishStatus }}</h5>
+            <h3>{{ book.subtitle }}</h3>
+            <h3 :class="classObject">{{ book.listPrice.amount }} {{ book.listPrice.currencyCode}}</h3>
+            <h4>Authors: <span v-for="author in book.authors">{{ author }}</span></h4>
+            <h4>Page count: {{ book.pageCount}} , {{ readingLevel }}</h4>
+            <h5>Published Date: {{ book.publishedDate }} , {{ publishStatus }}</h5>
             <img :src="book.thumbnail" alt="Book image">
+            <LongTxt :txt="book.description"/>
+            <p class="book-categories">Categories:
+                <span v-for="categorie in book.categories">{{ categorie }}</span></p>
+            <p class="lang">{{ book.language }}</p>
             <button @click="closeDetails">Close</button>
         </section>
     `,
@@ -35,4 +43,7 @@ export default {
             }
         },
     },
+    components: {
+        LongTxt,
+    }
 }
