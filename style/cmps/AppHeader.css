@@ -1,4 +1,5 @@
-.app-header {
+.header-content {
+    grid-column: 2/3;
     position: sticky;
     top: 0;
     z-index: 2;
@@ -10,9 +11,15 @@
     font-size: 1.2em;
     
     height: 70px;
-    background-color: var(--green);
     padding: 10px;
     color: #fff;
+}
+
+.app-header {
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: minmax(50px , 1fr) minmax(300px , 800px) minmax(50px , 1fr);
+    background-color: var(--green);
 }
 
 .app-header h1 {
@@ -22,4 +29,24 @@
 .app-header nav {
     display: flex;
     gap: 10px;
+}
+
+.app-header nav > * {
+    margin-inline-start: 15px;
+    position: relative;
+}
+
+.app-header nav > *:after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 0%;
+    bottom: -130%;
+    right: 0;
+    transition: .5s;
+}
+
+.app-header nav > *:hover:after {
+    width: 100%;
+    background-color: #fff;
 }

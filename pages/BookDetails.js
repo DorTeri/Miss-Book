@@ -23,7 +23,7 @@ export default {
             @remove="removeReview" 
             :reviews="book.reviews"/>
             <h3 v-else>No reviews yet</h3>
-            <AddReview :book="book.id" />
+            <AddReview />
         </section>
     `,
     data() {
@@ -43,7 +43,6 @@ export default {
         },
         removeReview(reviews) {
             this.book.reviews = reviews
-            console.log('this.book.reviews', this.book.reviews)
             bookService.save(this.book)
         }
     },
