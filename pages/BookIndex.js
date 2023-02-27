@@ -1,10 +1,9 @@
 import { bookService } from '../services/book.service.js'
 
-import BookFilter from './BookFilter.js'
-import BookList from './BookList.js'
+import BookFilter from '../cmps/BookFilter.js'
+import BookList from '../cmps/BookList.js'
 
-import BookEdit from './BookEdit.js'
-import BookDetails from './BookDetails.js'
+import { eventBusService } from '../services/event-bus.service.js'
 
 
 export default {
@@ -13,16 +12,11 @@ export default {
         <BookFilter v-show="isFilter" :books="books" @filter="setFilterBy"/>
         <button v-if="isFilter" class="btn-filter" @click="toggleFilter">close</button>
         <button v-if="!isFilter" class="btn-filter" @click="toggleFilter">Filter</button>
-        <button v-if="!add" class="btn-add" @click="toggleAdd">Add book</button>
-        <BookEdit v-show="add" @go-back="closeEdit" @book-saved="onSaveBook"/>
+        <RouterLink to="/book/edit">Add book</RouterLink>
         <BookList 
         :books="filteredBooks" 
         v-if="books"
-        @show-details="showBookDetails"/>
-        <bookDetails 
-        v-if="selectedBook"
-        @hide-details="selectedBook = null"
-        :book="selectedBook"/>
+        @remove="removeBook"/>
     </section>
     `,
     data() {
@@ -34,16 +28,18 @@ export default {
             isFilter: false
         }
     },
+    created() {
+        bookService.query()
+            .then(books => this.books = books)
+    },
     methods: {
         removeBook(bookId) {
             bookService.remove(bookId)
                 .then(() => {
                     const idx = this.books.findIndex(book => book.id === bookId)
                     this.books.splice(idx, 1)
+                    eventBusService.emit('show-msg', { txt: 'Book removed', type: 'success' })
                 })
-        },
-        showBookDetails(bookId) {
-            this.selectedBook = this.books.find(book => book.id === bookId)
         },
         onSaveBook(newBook) {
             this.books.unshift(newBook)
@@ -77,7 +73,5 @@ export default {
         bookService,
         BookList,
         BookFilter,
-        BookEdit,
-        BookDetails
     }
 }

@@ -1,9 +1,6 @@
 .book-details {
+    position: relative;
     text-align: center;
-    position: fixed;
-    top: 50vh;
-    left: 50vw;
-    translate: -50% -50%;
     display: grid;
     width: 50vw;
     padding: 10px;
@@ -16,7 +13,7 @@
     padding: 5px;
 }
 
-.book-details h2 {
+.book-details h1 {
     font-weight: bold;
 }
 
