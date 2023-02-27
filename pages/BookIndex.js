@@ -41,10 +41,6 @@ export default {
                     eventBusService.emit('show-msg', { txt: 'Book removed', type: 'success' })
                 })
         },
-        onSaveBook(newBook) {
-            this.books.unshift(newBook)
-            this.add = false
-        },
         setFilterBy(filterBy) {
             this.filterBy = filterBy
         },

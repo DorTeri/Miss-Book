@@ -1,4 +1,5 @@
 import { bookService } from "../services/book.service.js"
+import { eventBusService } from "../services/event-bus.service.js"
 
 
 export default {
@@ -7,9 +8,17 @@ export default {
         <form @submit.prevent="save">
             <h2>{{ titleDisplay }}</h2>
             <input type="text" v-model="book.title" placeholder="Book Title" required/>
+            <input type="text" v-model="book.subtitle" placeholder="Book subtitle" required/>
             <input type="number" v-model.number="book.listPrice.amount" title="Book price" required/>
+            <input type="number" v-model.number="book.pageCount" title="Page count" required/>
+            <select v-model="book.listPrice.currencyCode">
+                <option value="EUR">EUR</option>
+                <option value="ILS" >ILS</option>
+                <option value="USD">USD</option>
+            </select>
             <input type="text" v-model="book.authors" placeholder="Author name"/>
             <input type="text" v-model="book.publishedDate" placeholder="Publised year"/>
+            <input type="text" v-model="book.categories" placeholder="Categories"/>
             <input type="text" v-model="book.description" placeholder="Book description"/>
             <input type="text" v-model="book.thumbnail" placeholder="Book's url image"/>
             <p>Is on sale?
@@ -17,7 +26,6 @@ export default {
             </p>
             <p>Select language</p>
             <select v-model="book.language" required>
-                <option value="" selected disabled>Select language</option>
                 <option value="en">en</option>
                 <option value="he">he</option>
             </select>
@@ -31,8 +39,8 @@ export default {
             book: bookService.getEmptyBook()
         }
     },
-    created(){
-        const {bookId} = this.$route.params
+    created() {
+        const { bookId } = this.$route.params
         if (bookId) {
             bookService.get(bookId)
                 .then(book => this.book = book)
@@ -41,9 +49,10 @@ export default {
     methods: {
         save() {
             bookService.save(this.book)
-                .then(savedBook => {
+                .then(() => {
                     this.book = bookService.getEmptyBook()
-                    this.$emit('book-saved', {savedBook})
+                    eventBusService.emit('show-msg', { txt: 'Book saved', type: 'success' })
+                    this.$router.push('/book')
                 })
         },
         goBack() {
@@ -52,7 +61,7 @@ export default {
     },
     computed: {
         titleDisplay() {
-            if(this.book.title) return `Edit ${this.book.title}`
+            if (this.book.id) return `Edit ${this.book.title}`
             else return 'Add a book'
         }
     }

@@ -7,9 +7,10 @@
     justify-content: space-between;
     
     height: 70px;
-    background-color: #7796CB;
+    background-color: #4e7e11;
     padding: 10px;
     margin-bottom: 20px;
+    color: #fff;
 }
 
 .app-header h1 {

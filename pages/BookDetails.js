@@ -1,5 +1,7 @@
 import { bookService } from "../services/book.service.js"
 import LongTxt from "../cmps/LongTxt.js"
+import AddReview from "../cmps/AddReview.js"
+import ReviewPreview from "../cmps/ReviewPreview.js"
 
 export default {
     template: `
@@ -16,6 +18,12 @@ export default {
             <p class="book-categories">Categories:
                 <span v-for="categorie in book.categories">{{ categorie }}</span></p>
             <p class="lang">Language: {{ book.language }}</p>
+            <ReviewPreview 
+            v-if="(book.reviews && book.reviews === [])"
+            @remove="removeReview" 
+            :reviews="book.reviews"/>
+            <h3 v-else>No reviews yet</h3>
+            <AddReview :book="book.id" />
         </section>
     `,
     data() {
@@ -32,6 +40,11 @@ export default {
     methods: {
         closeDetails() {
             this.$emit('hide-details')
+        },
+        removeReview(reviews) {
+            this.book.reviews = reviews
+            console.log('this.book.reviews', this.book.reviews)
+            bookService.save(this.book)
         }
     },
     computed: {
@@ -59,5 +72,7 @@ export default {
     },
     components: {
         LongTxt,
+        AddReview,
+        ReviewPreview
     }
 }
