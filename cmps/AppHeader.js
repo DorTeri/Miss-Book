@@ -3,8 +3,8 @@ export default {
         <header class="app-header">
             <h1>Miss Book</h1>
             <nav>
-                <RouterLink to="/">Home</RouterLink> |
-                <RouterLink to="/book">Our Books</RouterLink> |
+                <RouterLink to="/">Home</RouterLink> 
+                <RouterLink to="/book">Our Books</RouterLink> 
                 <RouterLink to="/about">About</RouterLink>
             </nav>
         </header>

@@ -5,11 +5,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.2em;
     
     height: 70px;
-    background-color: #4e7e11;
+    background-color: var(--green);
     padding: 10px;
-    margin-bottom: 20px;
     color: #fff;
 }
 

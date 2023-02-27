@@ -6,7 +6,7 @@
     height: 70px;
     
     padding: 10px;
-    background-color: #4e7e11;
+    background-color: var(--green);
     color: #fff;
 }
 .app-footer p {
