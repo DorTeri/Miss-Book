@@ -1,9 +1,18 @@
-.book-filter {
+.books-filter {
+    position: absolute;
+    display: grid;
     padding: 10px;
-    background-color: lightgray;
+    background-color: rgb(209, 209, 209);
     margin-block-start: 10px;
+    z-index: 1;
+    opacity: 0;
+    transition: .8s;
 }
 
-.book-filter .checkbox-sale {
-    display: block;
+.books-filter.open {
+    opacity: 1;
+}
+
+.books-filter {
+    text-align: center;
 }

@@ -10,20 +10,23 @@ export default {
             <h1>{{ book.title }}</h1>
             <h2>{{ book.subtitle }}</h2>
             <h3 :class="classObject">{{ formattedPrice }}</h3>
-            <h4>Author: <span v-for="author in book.authors">{{ author }}</span></h4>
-            <h4>Page count: {{ book.pageCount}} , {{ readingLevel }}</h4>
+            <h4><span class="sub-titles">Author:</span> <span v-for="author in book.authors">{{ author }}</span> |
+            <span class="sub-titles">Page count:</span> {{ book.pageCount}} , {{ readingLevel }}</h4>
+            <h4></h4>
             <img :src="book.thumbnail">
             <LongTxt :txt="book.description"/>
-            <h5>Published Date: {{ book.publishedDate }} , {{ publishStatus }}</h5>
-            <p class="book-categories">Categories:
-                <span v-for="categorie in book.categories">{{ categorie }}</span></p>
-            <p class="lang">Language: {{ book.language }}</p>
+            <div><h5><span class="sub-titles">Published Date:</span> {{ book.publishedDate }} , {{ publishStatus }} |
+            <span class="sub-titles">Categories:</span> <span v-for="categorie in book.categories">{{ categorie }}</span> |
+            <span class="sub-titles">Language:</span> {{ book.language }} </h5>
+            </div>
+            <hr>
             <ReviewPreview 
-            v-if="(book.reviews && book.reviews === [])"
+            v-if="(book.reviews)"
             @remove="removeReview" 
             :reviews="book.reviews"/>
             <h3 v-else>No reviews yet</h3>
-            <AddReview />
+            <hr>
+            <AddReview @added="reviewAdded"/>
         </section>
     `,
     data() {
@@ -44,6 +47,11 @@ export default {
         removeReview(reviews) {
             this.book.reviews = reviews
             bookService.save(this.book)
+        },
+        reviewAdded(review) {
+            console.log('review', review)
+            if(!this.book.reviews) this.book.reviews = [review]
+            else this.book.reviews.push(review)
         }
     },
     computed: {

@@ -1,7 +1,7 @@
 export default {
     props: ['txt'],
     template: `
-    <h4>Book Description</h4>
+    <h4 class="sub-titles">Book Description</h4>
     <p>{{txtByLength}}
     <button class="btn-more" @click="showMore" v-if="isLong">
         <span v-if="!isMore">Read more</span>

@@ -1,12 +1,14 @@
 .book-details {
+    margin-inline-start: 50%;
+    translate: -50%;
     position: relative;
     text-align: center;
     display: grid;
-    width: 50vw;
     padding: 10px;
-    color: #fff;
-    background-color: rgba(58, 58, 58, 0.94);
-    margin-block-start: 10px;
+    width: 70%;
+    color: var(--green);
+    margin-top: 40px;
+    border: 1px solid var(--green);
 }
 
 .book-details > * {
@@ -18,6 +20,7 @@
 }
 
 .book-details .sale {
+    color: #fff;
     text-align: center;
     width: 35%;
     padding: 10px;
@@ -26,6 +29,20 @@
     right: -6%;
     top: 1%;
     transform: rotate(30deg);
+}
+
+.sub-titles {
+    font-weight: bold;
+}
+
+.book-details hr {
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    margin-inline-start: 50%;
+    translate: -50%;
+    background-color: inherit;
+    border: 1px dashed var(--green);
 }
 
 .book-details .btn-more {

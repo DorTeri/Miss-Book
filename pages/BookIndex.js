@@ -9,10 +9,12 @@ import { eventBusService } from '../services/event-bus.service.js'
 export default {
     template: `
     <section class="books-index">
-        <BookFilter v-show="isFilter" :books="books" @filter="setFilterBy"/>
+        <div class="filter-btns-section">
         <button v-if="isFilter" class="btn-filter" @click="toggleFilter">close</button>
         <button v-if="!isFilter" class="btn-filter" @click="toggleFilter">Filter</button>
         <RouterLink to="/book/edit">Add book</RouterLink>
+        </div>
+        <BookFilter :class="{ open: isFilter}" :books="books" @filter="setFilterBy"/>
         <BookList 
         :books="filteredBooks" 
         v-if="books"

@@ -4,6 +4,8 @@ import { eventBusService } from "../services/event-bus.service.js"
 
 export default {
     template: `
+    <section class="">
+    <RouterLink class="btn-back-edit" to="/book">Back</RouterLink>
     <section class="book-edit">
         <form @submit.prevent="save">
             <h2>{{ titleDisplay }}</h2>
@@ -31,7 +33,10 @@ export default {
             </select>
             <button>Add</button>
         </form>
-        <RouterLink to="/book">Back</RouterLink>
+        <div>
+        <img src="../images/open-book.jpg">
+        </div>
+    </section>
     </section>
     `,
     data() {
