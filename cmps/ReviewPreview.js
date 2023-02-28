@@ -1,3 +1,5 @@
+import { eventBusService } from "../services/event-bus.service.js"
+
 export default {
     props: ['reviews'],
     template: `
@@ -17,6 +19,7 @@ export default {
         remove(idx) {
             this.reviews.splice(idx , 1)
             this.$emit('remove' , this.reviews)
+            eventBusService.emit('show-msg', { txt: 'Review removed', type: 'success' })
         }
     }
 }

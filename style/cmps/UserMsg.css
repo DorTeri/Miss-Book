@@ -8,7 +8,8 @@
 }
 .user-msg.success {
     right: 0;
-    background-color: lightgreen;
+    background-color: var(--green);
+    color: #fff;
 }
 .user-msg.error {
     right: 0;
