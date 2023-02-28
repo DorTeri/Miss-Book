@@ -1,12 +1,17 @@
 .books-filter {
     position: absolute;
-    display: grid;
+    display: flex;
     padding: 10px;
-    background-color: rgb(209, 209, 209);
+    background-color: var(--green);
+    color: #fff;
     margin-block-start: 10px;
     z-index: 1;
     opacity: 0;
     transition: .8s;
+}
+
+.books-filter > * {
+    margin-inline-start: 5px;
 }
 
 .books-filter.open {

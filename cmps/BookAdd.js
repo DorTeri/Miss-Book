@@ -4,16 +4,16 @@ import { utilService } from "../services/util.service.js"
 
 export default {
     template: `
-    <form>
+    <section class="google-search">
+    <h2>Search & Add a book from google</h2>
     <input @input="debounceSearchGoogleBook" type="text" placeholder="Search book" v-model="txt">
-    <button>Submit</button>
-    </form>
     <ul>
         <li v-for="book in books">
             {{ book.volumeInfo.title }}
             <button @click="addBook(book)">+</button>
         </li>
     </ul>
+    </section>
     `,
     data() {
         return {
@@ -21,7 +21,7 @@ export default {
             books: null,
         }
     },
-    created(){
+    created() {
         this.debounceSearchGoogleBook = utilService.debounce(this.searchGoogleBook, 500)
     },
     methods: {
