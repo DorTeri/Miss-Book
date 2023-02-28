@@ -13,6 +13,7 @@ export default {
         <button v-if="isFilter" class="btn-filter" @click="toggleFilter">close</button>
         <button v-if="!isFilter" class="btn-filter" @click="toggleFilter">Filter</button>
         <RouterLink to="/book/edit">Add book</RouterLink>
+        <RouterLink to="/book/add">Search book</RouterLink>
         </div>
         <BookFilter :class="{ open: isFilter}" :books="books" @filter="setFilterBy"/>
         <BookList 

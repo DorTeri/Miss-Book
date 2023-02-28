@@ -1,11 +1,28 @@
+.details-page {
+    display: grid;
+    grid-template-columns: 50px auto 50px;
+    align-items: center;
+}
+
+.btn-next , .btn-prev {
+    font-size: 2rem;
+    color: var(--green);
+}
+
+.btn-next:hover , .btn-prev:hover {
+    font-size: 2.5rem;
+    color: red;
+}
+
 .book-details {
+    grid-column: 2;
     margin-inline-start: 50%;
     translate: -50%;
     position: relative;
     text-align: center;
     display: grid;
     padding: 10px;
-    width: 70%;
+    width: 80%;
     color: var(--green);
     margin-top: 40px;
     border: 1px solid var(--green);

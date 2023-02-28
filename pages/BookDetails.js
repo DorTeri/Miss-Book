@@ -5,7 +5,9 @@ import ReviewPreview from "../cmps/ReviewPreview.js"
 
 export default {
     template: `
-        <section v-if="book" class="book-details">
+    <section v-if="book" class="details-page">
+    <RouterLink :to="'/book/' + book.prevBookId"><i class="fa-solid fa-chevron-left btn-prev"></i></RouterLink>
+        <section class="book-details">
             <div class="sale" v-if="book.listPrice.isOnSale">On sale</div>
             <h1>{{ book.title }}</h1>
             <h2>{{ book.subtitle }}</h2>
@@ -28,6 +30,8 @@ export default {
             <hr>
             <AddReview @added="reviewAdded"/>
         </section>
+    <RouterLink :to="'/book/' + book.nextBookId"><i class="fa-solid fa-chevron-right btn-next"></i></RouterLink>
+    </section>
     `,
     data() {
         return {
@@ -36,9 +40,7 @@ export default {
         }
     },
     created() {
-        const { bookId } = this.$route.params
-        bookService.get(bookId)
-            .then(book => this.book = book)
+        this.loadBook()
     },
     methods: {
         closeDetails() {
@@ -52,9 +54,22 @@ export default {
             console.log('review', review)
             if(!this.book.reviews) this.book.reviews = [review]
             else this.book.reviews.push(review)
+        },
+        loadBook() {
+            const { bookId } = this.$route.params
+        bookService.get(bookId)
+            .then(book => this.book = book)
+        }
+    },
+    watch: {
+        bookId() {
+            this.loadBook()
         }
     },
     computed: {
+        bookId() {
+            return this.$route.params.bookId
+        },
         readingLevel() {
             if (this.book.pageCount > 500) return 'Serious reading'
             else if (this.book.pageCount > 200) return 'Descent reading'

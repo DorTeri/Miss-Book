@@ -1,19 +1,69 @@
-.about-section {
-    height: 0%;
+.about {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.team-link , .services-link {
+    text-align: center;
     margin-top: 20px;
+    justify-self: center;
+    font-size: 1.5rem;
+}
+
+.team-link i , .services-link i {
+    color: var(--green);
+    font-size: 2rem;
+}
+
+.services-link {
+    grid-column: 3;
+}
+
+.about h1 {
+    grid-column: 1;
+    margin-top: 20px;
+    font-size: 3rem;
+}
+
+.about-section {
+    margin-top: 30px;
+    grid-column: 1/-1;
+    grid-row: 2;
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fit , minmax(100px , 1fr));
+    grid-template-columns: repeat(2 , minmax(100px , 1fr));
+}
+
+.added-view {
+    grid-column: 1/-1;
 }
 
 .about-header {
     margin: 30px 0;
 }
 
-.about-section h2 {
-    margin-top: 0;
+.about-section h1 {
+    font-size: 2rem;
 }
 
 .about-section img {
     width: 100%;
+}
+
+.about-team , .about-services{
+    gap: 10px;
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 20px;
+}
+
+.about-team img , .about-services img {
+    width: 85%;
+}
+
+.about-team h1 , .about-services h1 {
+    font-size: 1.8rem;
 }

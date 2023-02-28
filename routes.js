@@ -3,7 +3,9 @@ import AboutPage from './pages/AboutPage.js'
 import BookIndex from './pages/BookIndex.js'
 import BookDetails from './pages/BookDetails.js'
 import BookEdit from './pages/BookEdit.js'
-
+import BookAdd from './cmps/BookAdd.js'
+import AboutServices from './cmps/AboutServices.js'
+import AboutTeam from './cmps/AboutTeam.js'
 
 
 
@@ -18,16 +20,16 @@ const options = {
         {
             path: '/about',
             component: AboutPage,
-            // children: [
-            //     {
-            //         path: 'team',
-            //         component: AboutTeam
-            //     },
-            //     {
-            //         path: 'services',
-            //         component: AboutServices
-            //     },
-            // ]
+            children: [
+                {
+                    path: 'team',
+                    component: AboutTeam
+                },
+                {
+                    path: 'services',
+                    component: AboutServices
+                },
+            ]
         },
         {
             path: '/book',
@@ -41,7 +43,10 @@ const options = {
             path: '/book/edit/:bookId?',
             component: BookEdit
         },
-        
+        {
+            path: '/book/add',
+            component: BookAdd
+        },
         // Last fallback if no route was matched:
         {
             path: '/:catchAll(.*)',

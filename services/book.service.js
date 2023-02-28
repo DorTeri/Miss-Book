@@ -12,7 +12,8 @@ export const bookService = {
     remove,
     save,
     getEmptyBook,
-    addReview
+    addReview,
+    addGoogleBook
 }
 
 makeData()
@@ -26,7 +27,7 @@ function query(filterBy = {}) {
     return storageService.query(BOOK_KEY)
         .then(books => {
             if (filterBy.txt) {
-                const regex = new RegExp(filterBy.txt, 'i')
+                const regex = new RegExp(txt, 'i')
                 books = books.filter(book => regex.test(book.title))
             }
             if (filterBy.maxPrice) {
@@ -47,6 +48,7 @@ function addReview(review, bookId) {
 
 function get(bookId) {
     return storageService.get(BOOK_KEY, bookId)
+        .then(_setNextPrevBookId)
 }
 
 function remove(bookId) {
@@ -83,5 +85,24 @@ function _createBook(title, amount = 200) {
     book.listPrice.currencyCode = "EUR"
     book.listPrice.inOnSale = false
     return book
+}
+
+function _setNextPrevBookId(book) {
+    return storageService.query(BOOK_KEY).then((books) => {
+        const bookIdx = books.findIndex((currBook) => currBook.id === book.id)
+        book.nextBookId = books[bookIdx + 1] ? books[bookIdx + 1].id : books[0].id
+        book.prevBookId = books[bookIdx - 1]
+            ? books[bookIdx - 1].id
+            : books[books.length - 1].id
+        return book
+    })
+}
+
+function addGoogleBook(item) {
+        return query()
+            .then(books => {
+                    const idx = books.findIndex(book => item.id === book.id)
+                    if (idx < 0) return storageService.post(BOOK_KEY, item)
+                })
 }
 
