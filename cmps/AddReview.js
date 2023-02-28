@@ -59,10 +59,6 @@ export default {
             this.review = { name: null, rate: 1, readAt: null }
         },
     },
-    computed: {
-        classChecked() {
-        }
-    },
     watch: {
         rateType() {
             console.log('this.rate', this.rateType)

@@ -51,7 +51,6 @@ export default {
             bookService.save(this.book)
         },
         reviewAdded(review) {
-            console.log('review', review)
             if(!this.book.reviews) this.book.reviews = [review]
             else this.book.reviews.push(review)
         },
