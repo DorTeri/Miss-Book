@@ -1,10 +1,19 @@
 .about-section {
+    height: 0%;
     margin-top: 20px;
     display: grid;
     gap: 20px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit , minmax(100px , 1fr));
 }
 
-.about-profile > *:first-child {
-    margin-bottom: 50px;
+.about-header {
+    margin: 30px 0;
+}
+
+.about-section h2 {
+    margin-top: 0;
+}
+
+.about-section img {
+    width: 100%;
 }

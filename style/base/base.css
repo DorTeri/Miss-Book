@@ -44,7 +44,7 @@ object {
 #app {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(50px , 1fr) minmax(300px , 800px) minmax(50px , 1fr);
+    grid-template-columns: minmax(50px , 1fr) minmax(300px , 1000px) minmax(50px , 1fr);
 }
 
 #app > * {
