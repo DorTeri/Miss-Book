@@ -34,7 +34,7 @@ export default {
             <button>Add</button>
         </form>
         <div>
-        <img src="../images/open-book.jpg">
+        <img src="images/open-book.jpg">
         </div>
     </section>
     </section>
