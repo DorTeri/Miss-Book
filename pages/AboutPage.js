@@ -22,7 +22,7 @@ export default {
             <h2>Books & Us</h2>
             <p>{{ makeLoremLong }}</p>
         </div>
-        <img src="../images/about-photo.jpg"/>
+        <img src="images/about-photo.jpg"/>
         </section>
         <RouterView />
         </section>
